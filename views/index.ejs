@@ -13,13 +13,18 @@
     </header>
     <hr>
     <h4>All Chats</h4>
+    <form method="GET" action="/chats/new">
+        <button>New Chat</button>
+    </form>
+    <br>
     <% for(let chat of chats) { %>
         <div class="chat">
-            <p>From: <i><%= chat.from %></i></p>
+            <p>To: <i><%= chat.to %></i></p>
+            
                 <div class="message">
                     <p><%= chat.message %></p>
                 </div>                            
-            <p>Recieved By: <i><%= chat.to %></i></p>
+            <p>From: <i><%= chat.from %></i></p>
             <hr>
     </div>
     <% } %>
