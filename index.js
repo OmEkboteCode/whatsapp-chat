@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 
 app.get("/chats", async (req, res) => {
   let chats = await Chat.find();
-//   console.log(chats);
+  //   console.log(chats);
   res.render("index.ejs", { chats });
 });
 
@@ -69,13 +69,22 @@ app.get("/chats/:id/edit", async (req, res) => {
 
 app.put("/chats/:id", async (req, res) => {
   let { id } = req.params;
-  let { message : newMessage } = req.body;
+  let { message: newMessage } = req.body;
   let updatedChat = await Chat.findByIdAndUpdate(
     id,
     { message: newMessage },
-    { runValidators: true, returnDocument: 'after' },
+    { runValidators: true, returnDocument: "after" },
   );
   console.log(updatedChat);
+  res.redirect("/chats");
+});
+
+//Destroy Route
+
+app.delete("/chats/:id", async (req, res) => {
+  let { id } = req.params;
+  let deletedChat = await Chat.findByIdAndDelete(id);
+  console.log(deletedChat);
   res.redirect("/chats");
 });
 

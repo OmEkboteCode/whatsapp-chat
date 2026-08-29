@@ -26,6 +26,9 @@
                     <form method="GET" action="/chats/<%= chat._id %>/edit">
                         <button class="edit">Edit</button>
                     </form>
+                    <form method="POST" action="/chats/<%= chat._id %>?_method=DELETE">
+                        <button class="delete">Delete</button>
+                    </form>
                 </div>                            
             <p>From: <i><%= chat.from %></i></p>
             <p><%= chat.created_at.toString().split(" ")[4] %></p>
