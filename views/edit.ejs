@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit</title>
-    <link rel="stylesheet" href="/style.css"/>
-</head>
-<body>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
     <h2>Edit</h2>
-    <hr>
-    <p>From: <i><%= chat.from %></i>  -> To: <i><%= chat.to %></i> </p>
+    <hr />
+    <p>From: <i><%= chat.from %></i> -> To: <i><%= chat.to %></i></p>
 
-    <form action="">
-        <textarea name="message" rows="4" cols="40"><%= chat.message %></textarea>
-        <br>
-        <button class="edit"> Edit</button>
+    <form method="POST" action="/chats/<%= chat._id %>?_method=PUT">
+      <textarea name="message" rows="4" cols="40"><%= chat.message %></textarea>
+      <br />
+      <button class="edit">Edit</button>
     </form>
-</body>
+  </body>
 </html>
