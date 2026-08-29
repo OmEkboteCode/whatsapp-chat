@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Message</title>
-    <link rel="stylesheet" href="/style.css"/>
+    <link rel="stylesheet" href="/style.css">
 </head>
-<body style="background-color: aliceblue;">
-    <h2>New Message</h2>
-    <hr>
-    <form method="POST" action="/chats">
-        <input placeholder="From" name="from"/>
-        <br/> 
-        <br/> 
-        <textarea name="message" placeholder="Write Your Message"></textarea>
-        <br/>
-        <br/>
-        <input placeholder="To" name="to"/>
-        <br/>
-        <br/>
-        <button>Create Chat</button>
-    </form>
+
+<body>
+    <main class="form-container">
+        <h2>New Message</h2>
+        <p class="form-subtitle">Start a New Conversation</p>
+        <form method="POST" action="/chats">
+            <label for="from">From</label>
+            <input id="from" type="text" name="from" placeholder="Your Name" required>
+            <label for="to">To</label>
+            <input id="to" type="text" name="to" placeholder="Recipient" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write Your Message.." rows="5" required></textarea>
+
+            <button class="new-chat" type="submit">Create Chat</button>
+        </form>
+        <a class="back-link" href="/chats">← Back To Chats</a>
+    </main>
+
 </body>
 </html>

@@ -7,35 +7,48 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <hr>
-    <header>
-        <h2>WhatsApp!</h2>
-    </header>
-    <hr>
-    <h4>All Chats</h4>
-    <form method="GET" action="/chats/new">
-        <button>New Chat</button>
-    </form>
-    <br>
-    <% for(let chat of chats) { %>
-        <div class="chat">
-            <p>To: <i><%= chat.to %></i></p>
-            
-                <div class="message">
-                    <p><%= chat.message %></p>
-                    <form method="GET" action="/chats/<%= chat._id %>/edit">
-                        <button class="edit">Edit</button>
-                    </form>
-                    <form method="POST" action="/chats/<%= chat._id %>?_method=DELETE">
-                        <button class="delete">Delete</button>
-                    </form>
-                </div>                            
-            <p>From: <i><%= chat.from %></i></p>
-            <p><%= chat.created_at.toString().split(" ")[4] %></p>
-            <p><%= chat.created_at.toString().split(" ").slice(0, 4).join("-") %></p>
-            <hr>
-    </div>
-    <% } %>
+    <main class="container">
+        <header>
+            <h2>WhatsApp!</h2>
+            <p>All your chats</p>
+        </header>
+        <div class="top-bar">
+            <h4>All Chats</h4>
+
+            <form method="GET" action="/chats/new">
+                <button class="new-chat">New Chat</button>
+            </form>
+        </div>
+        <section class="chat-list">
+            <% for(let chat of chats) { %>
+                <article class="chat">
+                    <div class="chat-header">
+                        <span>From: <b><%= chat.from  %></b></span>
+                        <span>To: <b><%= chat.to  %></b></span>
+                    </div>
+                    <p class="message">
+                        <%= chat.message %>
+                    </p>
+                    <div class="chat-footer">
+                        <Span>
+                            <%= chat.created_at.toString().split(" ")[4] %>
+                        </Span>
+                        <Span>
+                            <%= chat.created_at.toString().split(" ").slice(0,4).join("-") %>
+                        </Span>
+                    </div>
+                    <div class="action">
+                        <form method="GET" action="/chats/<%= chat._id %>/edit">
+                            <button class="edit">Edit</button>
+                        </form>
+                        <form method="POST" action="/chats/<%= chat._id %>?_method=DELETE">
+                            <button class="delete">Delete</button>
+                        </form>
+                    </div>
+                </article>
+            <% } %>
+        </section>
+    </main>
 
 </body>
 </html>
