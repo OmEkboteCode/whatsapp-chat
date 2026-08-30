@@ -1,0 +1,1 @@
+A simple chat application built while learning Node.js, Express.js, MongoDB, Mongoose and EJS.

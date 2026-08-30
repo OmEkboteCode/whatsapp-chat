@@ -3,56 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Whatsapp</title>
-    <link rel="stylesheet" href="style.css"/>
+    <title>BoxChat</title>
+    <link rel="stylesheet" href="/style.css"/>
 </head>
+
 <body>
+
     <main class="container">
+
         <header>
-            <h2>WhatsApp!</h2>
-            <p>All your chats</p>
+            <h2>BoxChat</h2>
+            <p>Your simple place for messages</p>
         </header>
+
         <div class="top-bar">
-            <h4>All Chats</h4>
+            <h4>Recent Chats</h4>
 
             <form method="GET" action="/chats/new">
                 <button class="new-chat">New Chat</button>
             </form>
         </div>
+
         <section class="chat-list">
+
             <% for(let chat of chats) { %>
+
                 <article class="chat">
+
                     <div class="chat-header">
-                        <span>From: <b><%= chat.from  %></b></span>
-                        <span>To: <b><%= chat.to  %></b></span>
+                        <span>From: <b><%= chat.from %></b></span>
+                        <span>To: <b><%= chat.to %></b></span>
                     </div>
+
                     <p class="message">
                         <%= chat.message %>
                     </p>
+
                     <div class="chat-footer">
-                        <Span>
+                        <span>
                             <%= chat.created_at.toString().split(" ")[4] %>
-                        </Span>
-                        <Span>
+                        </span>
+
+                        <span>
                             <%= chat.created_at.toString().split(" ").slice(0,4).join("-") %>
-                        </Span>
+                        </span>
                     </div>
+
                     <div class="action">
+
                         <form method="GET" action="/chats/<%= chat._id %>/edit">
                             <button class="edit">Edit</button>
                         </form>
+
                         <form method="POST" action="/chats/<%= chat._id %>?_method=DELETE">
                             <button class="delete">Delete</button>
                         </form>
+
                     </div>
+
                 </article>
+
             <% } %>
+
         </section>
+
     </main>
 
 </body>
 </html>
-
-
 
 

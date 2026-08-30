@@ -3,25 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Message</title>
+    <title>Edit Chat</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
     <main class="form-container">
+
         <h2>Edit Message</h2>
+
         <p class="chat-info">
-            From: <b><%= chat.from %></b>
-            → To: <b><%= chat.to %></b>
+            <b><%= chat.from %></b>
+            → 
+            <b><%= chat.to %></b>
         </p>
         <form method="POST" action="/chats/<%= chat._id %>?_method=PUT">
-            <label for="message">Message</label>
 
-            <textarea id="message" name="message" rows="5" required><%= chat.message %></textarea>
-            <button class="edit" type="submit">Save Changes</button>
+            <label for="message">Message</label>
+            <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+            ><%= chat.message %></textarea>
+
+            <button class="edit" type="submit">
+                Save Message
+            </button>
+
         </form>
-        <a class="back-link" href="/chats">← Back to chats</a>
+
+        <a class="back-link" href="/chats">
+            ← Back to chats
+        </a>
+
     </main>
 
 </body>
